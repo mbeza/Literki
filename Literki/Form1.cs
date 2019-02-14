@@ -22,11 +22,22 @@ namespace Literki
         private void timer1_Tick(object sender, EventArgs e)
         {
             listBox1.Items.Add((Keys)random.Next(65, 90));
-            if(listBox1.Items.Count >7)
+            if (listBox1.Items.Count > 7)
             {
                 listBox1.Items.Clear();
-                listBox1.Items.Add("KONIEC GRY");
                 timer1.Stop();
+                string result = "Twój wynik:\n" + correctLabel.Text + "\n" + missedLabel.Text + "\n" + accuracyLabel.Text + "\n\nCzy chcesz zagrać ponownie?";
+                var yesno = MessageBox.Show(result, "Koniec gry!", MessageBoxButtons.YesNo);
+
+                if (yesno == DialogResult.Yes)
+                {
+                    timer1.Interval = 800;
+                    timer1.Start();
+                }
+                else
+                {
+                    this.Close();
+                }
             }
         }
 
