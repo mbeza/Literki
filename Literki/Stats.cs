@@ -26,5 +26,12 @@ namespace Literki
             }
             accuracy = 100 * correct / total;
         }
+        public void Default()
+        {
+            total = 0;
+            missed = 0;
+            correct = 0;
+            accuracy = 0;
+        }
     }
 }
